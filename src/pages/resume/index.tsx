@@ -1,12 +1,13 @@
 import React from 'react'
+// @ts-ignore
+import html2pdf from 'html2pdf.js'
+
 import styles from './index.module.less'
 
 const BasicInfo = () => (
   <header className={styles['content-hd']}>
     <section className={styles.title}>
-      <div className={styles.name}>
-        <h1>Sunday</h1>
-      </div>
+      <span className={styles.name}>Sunday</span>
       <div className={styles.job}>
         <h2>Web前端开发工程师 | Golang后端工程师</h2>
       </div>
@@ -578,24 +579,28 @@ const PersonalSkills = () => {
   )
 }
 
+const Main = () => (
+  <main className={styles.content} id="resume">
+    {/* 基本信息 */}
+    <BasicInfo />
+
+    <div className={styles['content-bd']}>
+      {/* 工作经历 */}
+      <WorkExperience />
+
+      {/* 个人项目 */}
+      <PersonalProject />
+
+      {/*  掌握技能 */}
+      <PersonalSkills />
+    </div>
+  </main>
+)
+
 const Resume = () => {
   return (
     <>
-      <main className={styles.content}>
-        {/* 基本信息 */}
-        <BasicInfo />
-
-        <div className={styles['content-bd']}>
-          {/* 工作经历 */}
-          <WorkExperience />
-
-          {/* 个人项目 */}
-          <PersonalProject />
-
-          {/*  掌握技能 */}
-          <PersonalSkills />
-        </div>
-      </main>
+      <Main />
 
       <footer className={styles['github-footer']}>
         <a className={styles['footer-link']} href="https://github.com/TheFirstSunday/resume">
